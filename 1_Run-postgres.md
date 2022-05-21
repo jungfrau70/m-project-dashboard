@@ -1,4 +1,4 @@
-WORKDIR="/root/coc-dashboard"
+WORKDIR="/root/coc-lens"
 cd $WORKDIR
 
 ######################################################################
