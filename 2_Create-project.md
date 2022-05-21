@@ -5,7 +5,8 @@
 ### urls.py     # 프로젝트에 사용되는 url 들의 decorations
 ### manage.py   # 장고 프로젝트 커멘드라인 유틸리티
 
-WORKDIR="/root/coc-dashboard/"
+git clone https://github.com/jungfrau70/p-dashboard-django-vuejs.git coc-lens
+WORKDIR="/root/coc-lens/"
 cd $WORKDIR
 
 ######################################################################

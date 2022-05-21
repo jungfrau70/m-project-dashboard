@@ -1,7 +1,7 @@
 ### Under the MVT Pattern
 ### 4th, convert dataTypes between database and python
 
-WORKDIR="/root/coc-dashboard/backend/"
+WORKDIR="/root/coc-lens/backend"
 cd $WORKDIR
 
 

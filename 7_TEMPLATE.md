@@ -1,7 +1,7 @@
 ### Under the MVT Pattern
 ### 3rd, create web pages
 
-WORKDIR="/root/coc-dashboard/backend/"
+WORKDIR="/root/coc-lens/backend"
 cd $WORKDIR
 
 ######################################################################
