@@ -1,4 +1,4 @@
-#!/home/ubuntu/project2/venv/bin/python3
+#!/root/coc-dashboard/venv/bin/python3
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

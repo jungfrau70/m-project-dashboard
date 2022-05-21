@@ -6,7 +6,7 @@ try:
                                   password="TldhTl1!",
                                   host="127.0.0.1",
                                   port="5432",
-                                  database="postgres_db")
+                                  database="mytestdb")
 
     cursor = connection.cursor()
     # SQL query to create a new table

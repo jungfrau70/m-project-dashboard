@@ -7,7 +7,7 @@ try:
                                   password="TldhTl1!",
                                   host="127.0.0.1",
                                   port="5432",
-                                  database="postgres_db")
+                                  database="mytestdb")
 
     # Create a cursor to perform database operations
     cursor = connection.cursor()
