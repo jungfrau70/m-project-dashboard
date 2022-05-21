@@ -1,3 +1,6 @@
 venv/*
 venv/*/*
 venv/*/*/*
+postgres/postgres-data/*
+postgres/postgres-data/*/*
+postgres/postgres-data/*/*/*
