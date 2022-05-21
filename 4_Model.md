@@ -1,7 +1,7 @@
 ### Under the MVT Pattern
 ### First, create tables
 
-WORKDIR="~/coc-dashboard/backend"
+WORKDIR="/root/coc-dashboard/backend"
 cd $WORKDIR
 
 ######################################################################

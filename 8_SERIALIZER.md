@@ -1,5 +1,5 @@
 ### Under the MVT Pattern
-### Second, design URLs
+### 4th, convert dataTypes between database and python
 
 WORKDIR="/root/coc-dashboard/backend/"
 cd $WORKDIR
@@ -12,12 +12,6 @@ cd $WORKDIR
 ## Create serializers
 serializers.py
 
-
-######################################################################
-# 6. Write API methods
-######################################################################
-
-views.py
 
 ## 아래 내용 import 하고,
 -. 데이터 변환기 (디비->json) import

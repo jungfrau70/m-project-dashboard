@@ -1,10 +1,21 @@
 from django.shortcuts import render
+from django.views.generic import ListView, DetailView
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 
 from EmployeeApp.models import Departments,Employees
 from EmployeeApp.serializers import DepartmentSerializer,EmployeeSerializer
+
+# http://127.0.0.1:8000/employee/list/
+class EmployeeAppLV(ListView):
+    model = Employees
+    template_name = 'employee_list.html'     # 디폴드 값으로 생략 가능
+
+# http://127.0.0.1:8000/employee/<int:pk>/
+class EmployeeAppDV(DetailView):
+    model = Employees
+    template_name = 'employee_detail.html'   # 디폴트 설정 값으로 생략 가능
 
 # Create your views here.
 

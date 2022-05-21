@@ -5,7 +5,7 @@
 ### urls.py     # 프로젝트에 사용되는 url 들의 decorations
 ### manage.py   # 장고 프로젝트 커멘드라인 유틸리티
 
-WORKDIR="~/coc-dashboard/"
+WORKDIR="/root/coc-dashboard/"
 cd $WORKDIR
 
 ######################################################################
@@ -35,7 +35,7 @@ mkdir backend frontend
 cd backend
 
 ## 현재 디렉토리에 프로젝트 생성
-django-admin startproject DjangoAPI .
+django-admin startproject mysite .
 
 
 ######################################################################

@@ -1,7 +1,7 @@
 ### Under the MVT Pattern
 ### Second, design URLs
 
-WORKDIR="~/coc-dashboard/backend"
+WORKDIR="/root/coc-dashboard/backend"
 cd $WORKDIR
 
 

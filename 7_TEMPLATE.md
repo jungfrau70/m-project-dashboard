@@ -36,7 +36,7 @@ EOF
 mkdir -p blog/templates/blog
 
 ## html code 생성
-cat <<EOF | tee blog/templates/blog/blog_list.html
+cat <<EOF | tee blog/templates/blog/post_list.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +51,7 @@ cat <<EOF | tee blog/templates/blog/blog_list.html
 </html>
 EOF
 
-cat <<EOF | tee blog/templates/blog/blog_detail.html
+cat <<EOF | tee blog/templates/blog/post_detail.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,7 +75,7 @@ EOF
 mkdir -p EmployeeApp/templates/EmployeeApp
 
 ## html code 생성
-cat <<EOF | tee EmployeeApp/templates/EmployeeApp/employee_list.html
+cat <<EOF | tee EmployeeApp/templates/employee_list.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,7 +90,7 @@ cat <<EOF | tee EmployeeApp/templates/EmployeeApp/employee_list.html
 </html>
 EOF
 
-cat <<EOF | tee EmployeeApp/templates/EmployeeApp/employee_detail.html
+cat <<EOF | tee EmployeeApp/templates/employee_detail.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -105,3 +105,23 @@ cat <<EOF | tee EmployeeApp/templates/EmployeeApp/employee_detail.html
 </html>
 EOF
 
+
+######################################################################
+# 4. Run Django web server
+######################################################################
+
+python manage.py runserver
+
+
+######################################################################
+# 5. Test if URLs works
+######################################################################
+
+http://127.0.0.1:8000/
+http://127.0.0.1:8000/admin/
+
+http://127.0.0.1:8000/blog/post/list/
+http://127.0.0.1:8000/employee/list/
+
+http://127.0.0.1:8000/blog/post/1/
+http://127.0.0.1:8000/employee/1/
