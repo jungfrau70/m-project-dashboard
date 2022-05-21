@@ -1,124 +1,58 @@
-### Writing code with MVT Pattern
+### Under the MVT Pattern
+### Second, design URLs
 
 WORKDIR="~/coc-dashboard/backend"
 cd $WORKDIR
 
 ######################################################################
-# 1. Define tables using models.py
+# 1. Design URLs
 ######################################################################
 
-## Blog App
-vi blog/models.py
-
-## Employee App
-vi EmployeeApp/models.py
-
-
-######################################################################
-# 2. Define tables in Admin site
-######################################################################
-
-## Blog App
-vi blog/admin.py
-
-## Employee App
-vi EmployeeApp/admin.py
+URL Pattern               View Name               Template FileName
+/admin/                   (장고 기본 제공)
+/                         HomeView(TemplateView)  home.html
+/blog/post/list/          PostLV(ListView)        post_list.html
+/blog/post/<int:pk>/      PostDV(DetailView)      post_detail.html
 
 
 ######################################################################
-# 3. Make migration files
+# 2. Design Root(=Project) URLs
 ######################################################################
 
-## 실행하면, 마이그래이션 파일이 생성 됨
-(venv) python manage.py makemigrations
+from . import views
 
-<!-- You are trying to add the field 'create_dt' with 'auto_now_add=True' to departments without a default; the database needs something to populate existing rows.
-
- 1) Provide a one-off default now (will be set on all existing rows)
- 2) Quit, and let me add a default in models.py
-Select an option: 1
-Please enter the default value now, as valid Python
-You can accept the default 'timezone.now' by pressing 'Enter' or you can provide another value.
-The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
-Type 'exit' to exit this prompt
-[default: timezone.now] >>> 
-You are trying to add the field 'create_dt' with 'auto_now_add=True' to employees without a default; the database needs something to populate existing rows.
-
- 1) Provide a one-off default now (will be set on all existing rows)
- 2) Quit, and let me add a default in models.py
-Select an option: 1
-Please enter the default value now, as valid Python
-You can accept the default 'timezone.now' by pressing 'Enter' or you can provide another value.
-The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
-Type 'exit' to exit this prompt
-[default: timezone.now] >>> 
-Migrations for 'EmployeeApp':
-  EmployeeApp/migrations/0002_auto_20220521_1814.py
-    - Add field create_dt to departments
-    - Add field update_dt to departments
-    - Add field create_dt to employees
-    - Add field update_dt to employees
-Migrations for 'blog':
-  blog/migrations/0001_initial.py
-    - Create model Post
-     -->
-
-
-<!-- ## Push the changes thru migrations into databases
-(venv) python manage.py migrate EmployeeApp
-
-# Operations to perform:
-#   Apply all migrations: EmployeeApp
-# Running migrations:
-#   Applying EmployeeApp.0001_initial... OK -->
+urlpatterns = [
+    ...
+    path('', views.HomeView.as_view(), name='home'),
+    path('blog/', include('blog.urls')),
+    path('employee/', include('EmployeeApp.urls')),
+]
 
 
 ######################################################################
-# 4. Apply migration files to database
+# 3. Design (blog) App URLs
 ######################################################################
 
-## 실행하면, 데이터베이스에 마이그래이션 파일(수정사항)이 적용 됨
-(venv) python manage.py migrate
+from django.urls import path
+from blog import views
 
-<!-- Operations to perform:
-  Apply all migrations: EmployeeApp, admin, auth, blog, contenttypes, sessions
-Running migrations:
-  Applying EmployeeApp.0002_auto_20220521_1814... OK
-  Applying blog.0001_initial... OK -->
-
-
-######################################################################
-# 5. Check if tables are created
-######################################################################
-
-## Check if tables are created
-(venv) python ../scripts/select-tables.py
+app_name = 'blog'
+urlpatterns = [
+    path('post/list/', views.PostLV.as_view(), name='post_list'),
+    path('post/<int:pk>/', views.PostDV.as_view(), name='post_detail'),
+]
 
 
 ######################################################################
-# 6. Check if tables are created
+# 4. Design (EmployeeApp) App URLs
 ######################################################################
 
-## run django server
-(venv) python manage.py runserver
+from django.urls import path
+from EmployeeApp import views
 
+app_name = 'EmployeeApp'
+urlpatterns = [
+    path('employee/list/', views.EmployeAppLV.as_view(), name='employee_list'),
+    path('employee/<int:pk>/', views.EmployeeAppDV.as_view(), name='employee_detail'),
+]
 
-######################################################################
-# 5. Create serializers (convert dataTypes between python and database)
-######################################################################
-
-serializers.py
-
-
-######################################################################
-# 6. Write API methods
-######################################################################
-
-views.py
-
-## 아래 내용 import 하고,
--. 데이터 변환기 (디비->json) import
--. 정의된 모델 import
--. 정의된 시리얼라이저 import 
-
-## api 만들기

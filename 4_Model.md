@@ -1,4 +1,5 @@
-### Writing code with MVT Pattern
+### Under the MVT Pattern
+### First, create tables
 
 WORKDIR="~/coc-dashboard/backend"
 cd $WORKDIR
