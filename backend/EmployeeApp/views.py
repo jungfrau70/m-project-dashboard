@@ -5,6 +5,14 @@ from django.http.response import JsonResponse
 from EmployeeApp.models import Departments,Employees
 from EmployeeApp.serializers import DepartmentSerializer,EmployeeSerializer
 
+from django.core.files.storage import default_storage
+
+@csrf_exempt
+def saveFile(request):
+    file = request.FILES.get('image')
+    file_name = default_storage.save(file.name, file)
+    return JsonResponse(file_name,safe=False)
+
 @csrf_exempt
 def departmentApi(request,id=0):
     if request.method=='GET':

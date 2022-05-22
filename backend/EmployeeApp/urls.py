@@ -1,14 +1,23 @@
 from django.conf.urls import url
 from EmployeeApp import views
 
-# http://127.0.0.1:8000/employee/ + department/
-# http://127.0.0.1:8000/employee/ + department/<int:pk>/
+from django.conf.urls.static import static
+from django.conf import settings
+
+# http://127.0.0.1:8000/employee/
+# http://127.0.0.1:8000/employee/<int:pk>/
+
+# http://127.0.0.1:8000/department/
+# http://127.0.0.1:8000/department/<int:pk>/
+
 app_name = 'EmployeeApp'
 urlpatterns = [
     url(r'^department$', views.departmentApi),
     url(r'^department/([0-9]+)$', views.departmentApi),
 
     url(r'^employee$', views.employeeApi),
-    url(r'^employee/([0-9]+)$', views.employeeApi),    
-]
+    url(r'^employee/([0-9]+)$', views.employeeApi),
+
+    url(r'^employee/savefile', views.saveFile)
+]+static(settings.MEDIA_ROOT, document_root=settings.MEDIA_ROOT)
 
