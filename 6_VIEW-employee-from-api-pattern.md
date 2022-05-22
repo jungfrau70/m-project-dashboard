@@ -1,43 +1,34 @@
 ### Under the MVT Pattern
-### Second, design URLs
+### 4th, create VIEWs
+
+(방법1) DRF(API) 패턴
+#### 1. crsf_exempt 는 다른 도메인에서 api 를 접근할 수 있게 해 줌
+#### 2. JSONParser 는 incoming data 를 data model 로 Parsing
+#### 3. Model import
+#### 4. Serializer import
+#### 5. api 생성
 
 WORKDIR="/root/coc-lens/backend"
 cd $WORKDIR
 
 
 ######################################################################
-# 1. Create home view
+# 1. (Prereq) Create Serializer
 ######################################################################
 
-cat <<EOF | tee mysite/views.py
-from django.views.generic import TemplateView
-
-class HomeView(TemplateView):
-    template_name = 'home.html'
-EOF
-
+GOTO 8_SERIALIZER.md first
 
 ######################################################################
-# 2. Create blog view
+# 2. Create EmployeeApp view
 ######################################################################
 
-cat <<EOF | tee blog/views.py
-from django.views.generic import ListView,DetailView
-from blog.models import Post
-
-class PostLV(ListView):
-    model = Post
-    # template_name = 'blog/post_list.html'     # 디폴드 값으로 생략 가능
-
-class PostDV(DetailView):
-    model = Post
-    # template_name = 'blog/post_detail.html'   # 디폴트 설정 값으로 생략 가능
-EOF
-
-
-######################################################################
-# 3. Create EmployeeApp view
-######################################################################
+### 아래 모듈 import 하여, api 생성
+### 1. crsf_exempt 는 다른 도메인에서 api 를 접근할 수 있게 해 줌
+### 2. 데이터 변환기 (database->python[json]->database) import
+###    JSONParser 는 incoming data 를 data model 로 Parsing
+### 3. 정의된 모델 import
+### 4. 정의된 시리얼라이저 import 
+### 5. api 생성
 
 cat <<EOF | tee EmployeeApp/views.py
 from django.shortcuts import render

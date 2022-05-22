@@ -1,11 +1,14 @@
-from django.urls import path
+from django.conf.urls import url
 from EmployeeApp import views
 
-# http://127.0.0.1:8000/employee/ + list/
-# http://127.0.0.1:8000/employee/ + <int:pk>/
+# http://127.0.0.1:8000/employee/ + department/
+# http://127.0.0.1:8000/employee/ + department/<int:pk>/
 app_name = 'EmployeeApp'
 urlpatterns = [
-    path('list/', views.EmployeeAppLV.as_view(), name='employee_list'),
-    path('<int:pk>/', views.EmployeeAppDV.as_view(), name='employee_detail'),
+    url(r'^department$', views.departmentApi),
+    url(r'^department/([0-9]+)$', views.departmentApi),
+
+    url(r'^employee$', views.employeeApi),
+    url(r'^employee/([0-9]+)$', views.employeeApi),    
 ]
 

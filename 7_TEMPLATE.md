@@ -1,5 +1,5 @@
 ### Under the MVT Pattern
-### 3rd, create web pages
+### 4th, create web pages
 
 WORKDIR="/root/coc-lens/backend"
 cd $WORKDIR

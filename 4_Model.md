@@ -105,3 +105,24 @@ Running migrations:
 
 ## Admin page
 http://127.0.0.1:8000/admin
+
+
+######################################################################
+# 7. INSERT statements
+######################################################################
+
+select * from public."EmployeeApp_departments";
+
+INSERT INTO public."EmployeeApp_departments"
+("DepartmentName", create_dt, update_dt)
+VALUES('IT', '2022-05-22 07:28:00', '2022-05-22 07:28:00');
+
+INSERT INTO public."EmployeeApp_departments"
+("DepartmentName", create_dt, update_dt)
+VALUES('SUPPORT', '2022-05-22 07:28:00', '2022-05-22 07:28:00');
+
+select * from public."EmployeeApp_employees";
+
+INSERT INTO public."EmployeeApp_employees"
+("EmployeeName", "Department", "DateOfJoining", "PhotoFileName", create_dt, update_dt)
+VALUES('Bob', 'SUPPORT', '2022-05-22 07:30:00', 'jih.png', '2022-05-22 08:30:00', '2022-05-22 07:30:00');

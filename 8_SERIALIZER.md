@@ -1,4 +1,4 @@
-### Under the MVT Pattern
+### Under the DRF Pattern
 ### 4th, convert dataTypes between database and python
 
 WORKDIR="/root/coc-lens/backend"
@@ -6,16 +6,20 @@ cd $WORKDIR
 
 
 ######################################################################
-# 1. Convert dataTypes between python and database
+# 1. Convert dataTypes between python and database, and then render to json type, etc
 ######################################################################
 
-## Create serializers
-serializers.py
+cat <<EOF | tee EmployeeApp/serializers.py
+from rest_framework import serializers
+from EmployeeApp.models import Departments,Employees
 
+class DepartmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Departments
+        fields=('DepartmentId', 'DepartmentName', 'create_dt', 'update_dt')
 
-## 아래 내용 import 하고,
--. 데이터 변환기 (디비->json) import
--. 정의된 모델 import
--. 정의된 시리얼라이저 import 
+class EmployeeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Employees
+        fields=('EmployeeId', 'EmployeeName', 'Department', 'DateOfJoining', 'PhotoFileName', 'create_dt', 'update_dt')
 
-## api 만들기
