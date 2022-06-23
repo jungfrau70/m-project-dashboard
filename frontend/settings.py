@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',                       # djangorestframework
     'corsheaders',                          # cors
-    'dashboard.apps.DashboardConfig',       # app - dashboard
+    'dashboard',       # app - dashboard
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -80,16 +80,16 @@ WSGI_APPLICATION = 'frontend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'currencies',
-        'USER': 'postgres',
-        'PASSWORD': 'coc',
-        'HOST': '192.168.171.132',
-        'PORT': '5432'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'currencies',
+#         'USER': 'postgres',
+#         'PASSWORD': 'coc',
+#         'HOST': '192.168.171.132',
+#         'PORT': '5432'
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
