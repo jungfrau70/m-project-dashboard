@@ -5,14 +5,8 @@ import altair as alt
 
 # Create your views here.
 
-def main(request): #메인 화면
-    return render(
-    request, 
-    'home.html', 
-    {})
-
 class IndexView(TemplateView):
-    template_name = 'dashboard.html'
+    template_name = 'index.html'
 
     def get(self, request, *args, **kwargs):
         context = locals()
